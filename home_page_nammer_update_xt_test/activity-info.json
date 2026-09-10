@@ -1,0 +1,28 @@
+{
+  "activity_id": 0,
+  "activity_name": "Home Page Nammer update",
+  "activity_description": "",
+  "activity_status": "inactive",
+  "activity_start_date": "",
+  "activity_end_date": "",
+  "activity_type": "XT",
+  "activity_location": "https://creativebulls.github.io/flight-domain/",
+  "activity_target": "all_visitors",
+  "mbox_name": "target-global-mbox",
+  "variants": [
+    {
+      "variant": "variant_a",
+      "html_file": "home_page_nammer_update_xt_test_exp_a.html",
+      "offer_name": "Experience - Home Page Nammer update",
+      "offer_id": null,
+      "experience_name": "Experience - Home Page Nammer update",
+      "mode": "create_or_update"
+    }
+  ],
+  "actions": {
+    "push_offer": true,
+    "attach_offer_to_variant": true,
+    "sync_activity_state": false,
+    "create_activity_if_missing": true
+  }
+}
