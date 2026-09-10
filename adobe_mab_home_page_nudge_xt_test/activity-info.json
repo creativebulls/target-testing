@@ -1,0 +1,28 @@
+{
+  "activity_id": 0,
+  "activity_name": "ADOBE | MAB | Home Page Nudge",
+  "activity_description": "",
+  "activity_status": "inactive",
+  "activity_start_date": "",
+  "activity_end_date": "",
+  "activity_type": "XT",
+  "activity_location": "https://creativebulls.github.io/flight-domain/",
+  "activity_target": "all_visitors",
+  "mbox_name": "target-global-mbox",
+  "variants": [
+    {
+      "variant": "variant_a",
+      "html_file": "adobe_mab_home_page_nudge_xt_test_exp_a.html",
+      "offer_name": "Experience - ADOBE | MAB | Home Page Nudge",
+      "offer_id": null,
+      "experience_name": "Experience - ADOBE | MAB | Home Page Nudge",
+      "mode": "create_or_update"
+    }
+  ],
+  "actions": {
+    "push_offer": true,
+    "attach_offer_to_variant": true,
+    "sync_activity_state": false,
+    "create_activity_if_missing": true
+  }
+}

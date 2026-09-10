@@ -1,0 +1,332 @@
+<style data-atgit-offer="css">
+[data-atgit-offer-host] {
+  box-sizing: border-box;
+}
+
+[data-atgit-offer-host] *,
+[data-atgit-offer-host] *::before,
+[data-atgit-offer-host] *::after {
+  box-sizing: border-box;
+}
+
+[data-atgit-offer-host].atgit-welcome-host {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2147483000;
+  width: min(22.5rem, calc(100vw - 2rem));
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  font-family: "DM Sans", sans-serif;
+  color: rgb(26, 36, 51);
+}
+
+[data-atgit-offer-host] .atgit-welcome-card {
+  pointer-events: auto;
+  position: relative;
+  background: rgb(244, 247, 251);
+  color: rgb(26, 36, 51);
+  border: 1px solid rgba(11, 31, 58, 0.16);
+  border-radius: 24px;
+  padding: 1.2rem 1.25rem 1.15rem;
+  box-shadow: 0 14px 36px rgba(11, 31, 58, 0.18);
+  transform: translateX(calc(100% + 3rem));
+  opacity: 0;
+  animation: atgit-welcome-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
+}
+
+[data-atgit-offer-host].is-leaving .atgit-welcome-card {
+  animation: atgit-welcome-out 0.32s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+}
+
+[data-atgit-offer-host] .atgit-welcome-card::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  top: 0;
+  height: 3px;
+  background: rgb(11, 31, 58);
+  border-radius: 999px;
+}
+
+[data-atgit-offer-host] .atgit-welcome-top {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding-right: 2rem;
+  margin-bottom: 0.7rem;
+}
+
+[data-atgit-offer-host] .atgit-welcome-mark {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  display: block;
+}
+
+[data-atgit-offer-host] .atgit-welcome-kicker {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(11, 31, 58);
+}
+
+[data-atgit-offer-host] .atgit-welcome-title {
+  margin: 0 0 0.45rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: rgb(11, 31, 58);
+}
+
+[data-atgit-offer-host] .atgit-welcome-copy {
+  margin: 0 0 0.9rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgb(26, 36, 51);
+}
+
+[data-atgit-offer-host] .atgit-welcome-code {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0 0 0.85rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(11, 31, 58, 0.06);
+  border: 1px dashed rgba(11, 31, 58, 0.35);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+}
+
+[data-atgit-offer-host] .atgit-welcome-code-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(26, 36, 51, 0.72);
+}
+
+[data-atgit-offer-host] .atgit-welcome-code-value {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgb(11, 31, 58);
+}
+
+[data-atgit-offer-host] .atgit-welcome-cta {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.72rem 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(11, 31, 58);
+  color: rgb(255, 255, 255);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+[data-atgit-offer-host] .atgit-welcome-cta:hover,
+[data-atgit-offer-host] .atgit-welcome-cta:focus {
+  background: rgb(8, 22, 42);
+}
+
+[data-atgit-offer-host] .atgit-welcome-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 1px solid rgba(11, 31, 58, 0.22);
+  border-radius: 999px;
+  background: rgb(255, 255, 255);
+  color: rgb(11, 31, 58);
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+[data-atgit-offer-host] .atgit-welcome-close:hover,
+[data-atgit-offer-host] .atgit-welcome-close:focus {
+  background: rgb(11, 31, 58);
+  color: rgb(255, 255, 255);
+}
+
+@keyframes atgit-welcome-in {
+  from {
+    transform: translateX(calc(100% + 3rem));
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes atgit-welcome-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(calc(100% + 3rem));
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-atgit-offer-host].atgit-welcome-host {
+    right: 12px;
+    bottom: 12px;
+    width: calc(100vw - 24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-atgit-offer-host] .atgit-welcome-card,
+  [data-atgit-offer-host].is-leaving .atgit-welcome-card {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+</style>
+
+<script data-atgit-offer="js">
+(function () {
+  var existing = document.querySelectorAll("[data-atgit-offer-host]");
+  for (var i = 0; i < existing.length; i++) {
+    if (existing[i].parentNode) {
+      existing[i].parentNode.removeChild(existing[i]);
+    }
+  }
+
+  var host = document.createElement("aside");
+  host.setAttribute("data-atgit-offer-host", "");
+  host.className = "atgit-welcome-host";
+  host.setAttribute("role", "region");
+  host.setAttribute("aria-label", "Welcome discount");
+  host.setAttribute("aria-live", "polite");
+
+  var card = document.createElement("div");
+  card.className = "atgit-welcome-card";
+
+  var closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "atgit-welcome-close";
+  closeBtn.setAttribute("aria-label", "Dismiss welcome offer");
+  closeBtn.textContent = "×";
+
+  var top = document.createElement("div");
+  top.className = "atgit-welcome-top";
+
+  var logoMark = document.querySelector("header.site-header .logo-mark");
+  if (logoMark) {
+    var mark = logoMark.cloneNode(true);
+    mark.setAttribute("class", "atgit-welcome-mark");
+    mark.setAttribute("aria-hidden", "true");
+    top.appendChild(mark);
+  }
+
+  var kicker = document.createElement("p");
+  kicker.className = "atgit-welcome-kicker";
+  kicker.textContent = "Welcome offer";
+  top.appendChild(kicker);
+
+  var title = document.createElement("h2");
+  title.className = "atgit-welcome-title";
+  title.id = "atgit-welcome-title";
+  title.textContent = "Fly farther for less.";
+
+  var copy = document.createElement("p");
+  copy.className = "atgit-welcome-copy";
+  copy.textContent =
+    "Enjoy 15% off your first SkyJet booking. Apply this welcome fare when you search a route.";
+
+  var codeRow = document.createElement("button");
+  codeRow.type = "button";
+  codeRow.className = "atgit-welcome-code";
+  codeRow.setAttribute("aria-label", "Copy discount code WELCOME15");
+
+  var codeLabel = document.createElement("span");
+  codeLabel.className = "atgit-welcome-code-label";
+  codeLabel.textContent = "Your code";
+
+  var codeValue = document.createElement("span");
+  codeValue.className = "atgit-welcome-code-value";
+  codeValue.textContent = "WELCOME15";
+
+  codeRow.appendChild(codeLabel);
+  codeRow.appendChild(codeValue);
+
+  var cta = document.createElement("button");
+  cta.type = "button";
+  cta.className = "atgit-welcome-cta";
+  cta.textContent = "Search flights";
+
+  function dismissNudge() {
+    if (host.classList.contains("is-leaving")) {
+      return;
+    }
+    host.classList.add("is-leaving");
+    window.setTimeout(function () {
+      if (host.parentNode) {
+        host.parentNode.removeChild(host);
+      }
+    }, 340);
+  }
+
+  closeBtn.addEventListener("click", dismissNudge);
+
+  codeRow.addEventListener("click", function () {
+    var value = "WELCOME15";
+    function markCopied() {
+      codeLabel.textContent = "Copied";
+      window.setTimeout(function () {
+        codeLabel.textContent = "Your code";
+      }, 1600);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value).then(markCopied).catch(markCopied);
+    } else {
+      markCopied();
+    }
+  });
+
+  cta.addEventListener("click", function () {
+    var form = document.querySelector("#searchForm");
+    if (form && form.scrollIntoView) {
+      form.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    var fromField = document.querySelector("#fromAirport");
+    if (fromField && fromField.focus) {
+      window.setTimeout(function () {
+        fromField.focus();
+      }, 400);
+    }
+  });
+
+  card.appendChild(closeBtn);
+  card.appendChild(top);
+  card.appendChild(title);
+  card.appendChild(copy);
+  card.appendChild(codeRow);
+  card.appendChild(cta);
+  host.appendChild(card);
+
+  host.setAttribute("aria-labelledby", "atgit-welcome-title");
+  document.body.appendChild(host);
+})();
+</script>
