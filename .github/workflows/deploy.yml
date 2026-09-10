@@ -1,0 +1,60 @@
+name: Deploy Adobe Target
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-adobe-target-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy to Adobe Target MCP
+    # Deploy on merge to main (push) or manual run — skip PR validation gate.
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Set change-detection SHAs
+        id: shas
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            BEFORE="${{ github.event.before }}"
+            AFTER="${{ github.sha }}"
+          else
+            BEFORE="${{ github.sha }}"
+            AFTER="${{ github.sha }}"
+          fi
+          echo "before=$BEFORE" >> "$GITHUB_OUTPUT"
+          echo "after=$AFTER" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy activities via Target MCP
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          GITHUB_BEFORE_SHA: ${{ steps.shas.outputs.before }}
+          GITHUB_SHA: ${{ steps.shas.outputs.after }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          ADOBE_ACCESS_TOKEN: ${{ secrets.ADOBE_ACCESS_TOKEN }}
+          ADOBE_CLIENT_ID: ${{ secrets.ADOBE_CLIENT_ID }}
+          ADOBE_CLIENT_SECRET: ${{ secrets.ADOBE_CLIENT_SECRET }}
+          MCP_SERVER_URL: ${{ vars.MCP_SERVER_URL }}
+          DEPLOY_USERNAME: ${{ vars.DEPLOY_USERNAME }}
+        run: python scripts/deploy_to_target_mcp.py
