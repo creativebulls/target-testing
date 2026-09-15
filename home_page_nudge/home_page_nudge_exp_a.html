@@ -1,0 +1,253 @@
+<style data-atgit-offer="css">
+/* SkyJet welcome nudge — bottom-right, site theme */
+[data-atgit-offer-host="welcome-nudge"] {
+  box-sizing: border-box;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+  width: min(340px, calc(100vw - 32px));
+  padding: 22px 22px 20px;
+  background: rgb(255, 255, 255);
+  color: rgb(26, 36, 51);
+  border: 1px solid rgb(11, 31, 58);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(11, 31, 58, 0.22);
+  font-family: "DM Sans", sans-serif;
+  transform: translate(120%, 40%);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+  pointer-events: none;
+}
+
+[data-atgit-offer-host="welcome-nudge"].is-open {
+  transform: translate(0, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+[data-atgit-offer-host="welcome-nudge"] *,
+[data-atgit-offer-host="welcome-nudge"] *::before,
+[data-atgit-offer-host="welcome-nudge"] *::after {
+  box-sizing: border-box;
+}
+
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-eyebrow {
+  margin: 0 0 6px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(11, 31, 58);
+  opacity: 0.72;
+}
+
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-title {
+  margin: 0 0 8px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: rgb(11, 31, 58);
+}
+
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-copy {
+  margin: 0 0 16px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgb(26, 36, 51);
+  opacity: 0.88;
+}
+
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 999px;
+  background: rgb(11, 31, 58);
+  color: rgb(255, 255, 255);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-cta:hover,
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-cta:focus-visible {
+  background: rgb(26, 36, 51);
+  outline: none;
+}
+
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-dismiss {
+  margin: 0;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: rgb(26, 36, 51);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  opacity: 0.7;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-dismiss:hover,
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-dismiss:focus-visible {
+  opacity: 1;
+  outline: none;
+}
+
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgb(244, 247, 251);
+  color: rgb(11, 31, 58);
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-close:hover,
+[data-atgit-offer-host="welcome-nudge"] .atgit-nudge-close:focus-visible {
+  background: rgb(11, 31, 58);
+  color: rgb(255, 255, 255);
+  outline: none;
+}
+
+@media (max-width: 480px) {
+  [data-atgit-offer-host="welcome-nudge"] {
+    right: 12px;
+    bottom: 12px;
+    width: calc(100vw - 24px);
+    padding: 20px 18px 18px;
+  }
+}
+</style>
+
+<script data-atgit-offer="js">
+(function () {
+  var ATTR = "data-atgit-offer-host";
+  var HOST_VAL = "welcome-nudge";
+
+  document.querySelectorAll("[" + ATTR + "]").forEach(function (node) {
+    node.remove();
+  });
+
+  var host = document.createElement("div");
+  host.setAttribute(ATTR, HOST_VAL);
+  host.setAttribute("role", "dialog");
+  host.setAttribute("aria-label", "Welcome to SkyJet Airlines");
+
+  var closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "atgit-nudge-close";
+  closeBtn.setAttribute("aria-label", "Close welcome message");
+  closeBtn.textContent = "×";
+
+  var eyebrow = document.createElement("p");
+  eyebrow.className = "atgit-nudge-eyebrow";
+  eyebrow.textContent = "Welcome aboard";
+
+  var title = document.createElement("h2");
+  title.className = "atgit-nudge-title";
+  title.textContent = "Ready when you are.";
+
+  var copy = document.createElement("p");
+  copy.className = "atgit-nudge-copy";
+  copy.textContent =
+    "Search everyday routes, compare fares, and book your next SkyJet flight in a few clicks.";
+
+  var actions = document.createElement("div");
+  actions.className = "atgit-nudge-actions";
+
+  var bookBtn = document.createElement("button");
+  bookBtn.type = "button";
+  bookBtn.className = "atgit-nudge-cta";
+  bookBtn.textContent = "Book now";
+
+  var dismissBtn = document.createElement("button");
+  dismissBtn.type = "button";
+  dismissBtn.className = "atgit-nudge-dismiss";
+  dismissBtn.textContent = "Maybe later";
+
+  function closeNudge() {
+    host.classList.remove("is-open");
+    window.setTimeout(function () {
+      if (host.parentNode) host.remove();
+    }, 400);
+  }
+
+  function goBook() {
+    var searchForm = document.querySelector("#searchForm");
+    var searchAnchor = document.querySelector("#search");
+    var headerCta = document.querySelector("a.header-cta");
+    var target = searchForm || searchAnchor || headerCta;
+
+    closeNudge();
+
+    if (searchForm) {
+      searchForm.scrollIntoView({ behavior: "smooth", block: "center" });
+      var from = document.querySelector("#fromAirport");
+      if (from && typeof from.focus === "function") {
+        window.setTimeout(function () {
+          from.focus();
+        }, 450);
+      }
+      return;
+    }
+
+    if (headerCta) {
+      headerCta.click();
+      return;
+    }
+
+    if (target && target.scrollIntoView) {
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  closeBtn.addEventListener("click", closeNudge);
+  dismissBtn.addEventListener("click", closeNudge);
+  bookBtn.addEventListener("click", goBook);
+
+  actions.appendChild(bookBtn);
+  actions.appendChild(dismissBtn);
+
+  host.appendChild(closeBtn);
+  host.appendChild(eyebrow);
+  host.appendChild(title);
+  host.appendChild(copy);
+  host.appendChild(actions);
+
+  document.body.appendChild(host);
+
+  window.requestAnimationFrame(function () {
+    window.requestAnimationFrame(function () {
+      host.classList.add("is-open");
+    });
+  });
+})();
+</script>
