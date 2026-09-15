@@ -1,6 +1,6 @@
 <style data-atgit-offer="css">
 section.hero {
-  background-image: url("https://images.pexels.com/photos/3140204/pexels-photo-3140204.jpeg");
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9yD3NAidzp4_4S_r7OUuib5TvyAFYntImLqnGPpXuYkqqYkQwvY4T7Sa2&s=10");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -18,10 +18,13 @@ section.hero {
     document.querySelector("section.hero");
   if (!hero) return;
 
-  hero.style.backgroundImage =
-    'url("https://images.pexels.com/photos/3140204/pexels-photo-3140204.jpeg")';
+  var imageUrl =
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9yD3NAidzp4_4S_r7OUuib5TvyAFYntImLqnGPpXuYkqqYkQwvY4T7Sa2&s=10";
+
+  hero.style.backgroundImage = 'url("' + imageUrl + '")';
   hero.style.backgroundSize = "cover";
   hero.style.backgroundPosition = "center";
   hero.style.backgroundRepeat = "no-repeat";
+  hero.setAttribute("data-atgit-bg-image", imageUrl);
 })();
 </script>
