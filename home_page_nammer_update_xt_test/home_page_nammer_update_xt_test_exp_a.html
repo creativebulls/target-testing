@@ -1,0 +1,27 @@
+<style data-atgit-offer="css">
+section.hero {
+  background-image: url("https://images.pexels.com/photos/3140204/pexels-photo-3140204.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+</style>
+
+<script data-atgit-offer="js">
+(function () {
+  document.querySelectorAll("[data-atgit-offer-host]").forEach(function (node) {
+    node.remove();
+  });
+
+  var hero =
+    document.querySelector("html > body > section.hero:nth-of-type(1)") ||
+    document.querySelector("section.hero");
+  if (!hero) return;
+
+  hero.style.backgroundImage =
+    'url("https://images.pexels.com/photos/3140204/pexels-photo-3140204.jpeg")';
+  hero.style.backgroundSize = "cover";
+  hero.style.backgroundPosition = "center";
+  hero.style.backgroundRepeat = "no-repeat";
+})();
+</script>
