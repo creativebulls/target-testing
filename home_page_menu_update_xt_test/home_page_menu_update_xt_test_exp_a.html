@@ -1,0 +1,27 @@
+<style data-atgit-offer="css">
+/* Offer styles — header nav promo link */
+header.site-header nav.nav a[data-atgit-offer-host] {
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  white-space: nowrap;
+}
+</style>
+
+<script data-atgit-offer="js">
+(function () {
+  document.querySelectorAll("[data-atgit-offer-host]").forEach(function (node) {
+    node.remove();
+  });
+
+  var nav = document.querySelector("header.site-header nav.nav");
+  if (!nav) return;
+
+  var link = document.createElement("a");
+  link.setAttribute("data-atgit-offer-host", "1");
+  link.href = "#search";
+  link.textContent = "50% discount on selected flights";
+  nav.appendChild(link);
+})();
+</script>
