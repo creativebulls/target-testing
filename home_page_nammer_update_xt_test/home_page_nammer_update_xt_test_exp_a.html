@@ -1,6 +1,6 @@
 <style data-atgit-offer="css">
 section.hero {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9yD3NAidzp4_4S_r7OUuib5TvyAFYntImLqnGPpXuYkqqYkQwvY4T7Sa2&s=10");
+  background-image: url("https://static.vecteezy.com/system/resources/previews/025/737/013/non_2x/lufthansa-airbus-a380-d-aimf-passenger-plane-landing-at-frankfurt-airport-free-photo.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,17 +14,17 @@ section.hero {
   });
 
   var hero =
-    document.querySelector("html > body > section.hero:nth-of-type(1)") ||
-    document.querySelector("section.hero");
+    document.querySelector("section.hero") ||
+    document.querySelector("html > body > section.hero");
   if (!hero) return;
 
-  var imageUrl =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9yD3NAidzp4_4S_r7OUuib5TvyAFYntImLqnGPpXuYkqqYkQwvY4T7Sa2&s=10";
+  var url =
+    "https://static.vecteezy.com/system/resources/previews/025/737/013/non_2x/lufthansa-airbus-a380-d-aimf-passenger-plane-landing-at-frankfurt-airport-free-photo.jpg";
 
-  hero.style.backgroundImage = 'url("' + imageUrl + '")';
+  hero.style.backgroundImage = 'url("' + url + '")';
   hero.style.backgroundSize = "cover";
   hero.style.backgroundPosition = "center";
   hero.style.backgroundRepeat = "no-repeat";
-  hero.setAttribute("data-atgit-bg-image", imageUrl);
+  hero.setAttribute("data-atgit-bg-image", url);
 })();
 </script>
