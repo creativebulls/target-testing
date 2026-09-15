@@ -1,0 +1,43 @@
+<style data-atgit-offer="css">
+/* Recolor header Search flights CTA — brand palette only */
+header.site-header .header-inner > a.header-cta {
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(11, 31, 58) !important;
+  border-color: rgb(255, 255, 255) !important;
+  font-family: "DM Sans", sans-serif;
+}
+
+header.site-header .header-inner > a.header-cta:hover,
+header.site-header .header-inner > a.header-cta:focus {
+  background-color: rgb(244, 247, 251) !important;
+  color: rgb(11, 31, 58) !important;
+  border-color: rgb(244, 247, 251) !important;
+}
+</style>
+
+<script data-atgit-offer="js">
+(function () {
+  document.querySelectorAll("[data-atgit-offer-host]").forEach(function (node) {
+    node.remove();
+  });
+
+  var cta =
+    document.querySelector(
+      "header.site-header > div.container.header-inner > a.header-cta"
+    ) || document.querySelector("header.site-header a.header-cta");
+
+  if (!cta) return;
+
+  cta.style.backgroundColor = "rgb(255, 255, 255)";
+  cta.style.color = "rgb(11, 31, 58)";
+  cta.style.borderColor = "rgb(255, 255, 255)";
+  cta.style.fontFamily = '"DM Sans", sans-serif';
+
+  var host = document.createElement("div");
+  host.setAttribute("data-atgit-offer-host", "1");
+  host.setAttribute("aria-hidden", "true");
+  host.style.cssText =
+    "position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;";
+  document.documentElement.appendChild(host);
+})();
+</script>
