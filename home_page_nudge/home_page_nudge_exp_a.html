@@ -168,6 +168,13 @@
 (function () {
   var ATTR = "data-atgit-offer-host";
   var HOST_VAL = "welcome-nudge";
+  var DELAY_MS = 3000;
+  var TIMER_KEY = "__atgitWelcomeNudgeTimer";
+
+  if (window[TIMER_KEY]) {
+    window.clearTimeout(window[TIMER_KEY]);
+    window[TIMER_KEY] = null;
+  }
 
   document.querySelectorAll("[" + ATTR + "]").forEach(function (node) {
     node.remove();
@@ -218,6 +225,10 @@
   dismissBtn.textContent = "Not now";
 
   function closeNudge() {
+    if (window[TIMER_KEY]) {
+      window.clearTimeout(window[TIMER_KEY]);
+      window[TIMER_KEY] = null;
+    }
     host.classList.remove("is-open");
     window.setTimeout(function () {
       if (host.parentNode) host.remove();
@@ -270,10 +281,14 @@
 
   document.body.appendChild(host);
 
-  window.requestAnimationFrame(function () {
+  window[TIMER_KEY] = window.setTimeout(function () {
+    window[TIMER_KEY] = null;
+    if (!host.parentNode) return;
     window.requestAnimationFrame(function () {
-      host.classList.add("is-open");
+      window.requestAnimationFrame(function () {
+        host.classList.add("is-open");
+      });
     });
-  });
+  }, DELAY_MS);
 })();
 </script>
