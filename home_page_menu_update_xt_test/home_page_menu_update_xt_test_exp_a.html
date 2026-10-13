@@ -11,17 +11,82 @@ header.site-header nav.nav a[data-atgit-offer-host] {
 
 <script data-atgit-offer="js">
 (function () {
-  document.querySelectorAll("[data-atgit-offer-host]").forEach(function (node) {
-    node.remove();
-  });
+  var NAV_SELECTOR = "header.site-header nav.nav";
+  var applied = false;
+  var observer = null;
+  var pollTimer = null;
 
-  var nav = document.querySelector("header.site-header nav.nav");
-  if (!nav) return;
+  function cleanupOfferHosts() {
+    document.querySelectorAll("[data-atgit-offer-host]").forEach(function (node) {
+      node.remove();
+    });
+  }
 
-  var link = document.createElement("a");
-  link.setAttribute("data-atgit-offer-host", "1");
-  link.href = "#search";
-  link.textContent = "50% discount on selected flights";
-  nav.appendChild(link);
+  function stopWaiting() {
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+    }
+    if (pollTimer) {
+      clearInterval(pollTimer);
+      pollTimer = null;
+    }
+  }
+
+  function applyOffer() {
+    var nav = document.querySelector(NAV_SELECTOR);
+    if (!nav) return false;
+
+    cleanupOfferHosts();
+
+    var link = document.createElement("a");
+    link.setAttribute("data-atgit-offer-host", "1");
+    link.href = "#search";
+    link.textContent = "50% discount on selected flights";
+    nav.appendChild(link);
+
+    applied = true;
+    stopWaiting();
+    return true;
+  }
+
+  function tryApply() {
+    if (applied) return;
+    applyOffer();
+  }
+
+  function waitForNav() {
+    if (tryApply()) return;
+
+    if (!observer && document.documentElement) {
+      observer = new MutationObserver(function () {
+        tryApply();
+      });
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    }
+
+    if (!pollTimer) {
+      pollTimer = setInterval(function () {
+        tryApply();
+      }, 200);
+    }
+  }
+
+  function onPageReady() {
+    waitForNav();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", onPageReady, { once: true });
+  } else {
+    onPageReady();
+  }
+
+  window.addEventListener("load", function () {
+    tryApply();
+  }, { once: true });
 })();
 </script>
