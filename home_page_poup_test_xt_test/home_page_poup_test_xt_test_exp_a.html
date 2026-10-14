@@ -1,0 +1,279 @@
+<style data-atgit-offer="css">
+[data-atgit-offer-host] {
+  box-sizing: border-box;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: "DM Sans", sans-serif;
+  color: rgb(26, 36, 51);
+}
+
+[data-atgit-offer-host] *,
+[data-atgit-offer-host] *::before,
+[data-atgit-offer-host] *::after {
+  box-sizing: border-box;
+}
+
+[data-atgit-offer-host] .atgit-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 31, 58, 0.55);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+[data-atgit-offer-host] .atgit-modal {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 420px);
+  background: rgb(244, 247, 251);
+  color: rgb(26, 36, 51);
+  border: 1px solid rgb(11, 31, 58);
+  border-radius: 24px;
+  padding: 32px 28px 28px;
+  box-shadow: 0 18px 48px rgba(11, 31, 58, 0.28);
+  text-align: center;
+}
+
+[data-atgit-offer-host] .atgit-eyebrow {
+  margin: 0 0 8px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(11, 31, 58);
+  opacity: 0.75;
+}
+
+[data-atgit-offer-host] .atgit-title {
+  margin: 0 0 12px;
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: rgb(11, 31, 58);
+}
+
+[data-atgit-offer-host] .atgit-copy {
+  margin: 0 0 20px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgb(26, 36, 51);
+}
+
+[data-atgit-offer-host] .atgit-coupon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 24px;
+  padding: 12px 16px;
+  background: rgb(255, 255, 255);
+  border: 1px dashed rgb(11, 31, 58);
+  border-radius: 12px;
+}
+
+[data-atgit-offer-host] .atgit-coupon-code {
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgb(11, 31, 58);
+}
+
+[data-atgit-offer-host] .atgit-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+
+[data-atgit-offer-host] .atgit-cta {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: rgb(11, 31, 58);
+  color: rgb(255, 255, 255);
+}
+
+[data-atgit-offer-host] .atgit-cta:hover,
+[data-atgit-offer-host] .atgit-cta:focus-visible {
+  outline: none;
+  background: rgb(26, 36, 51);
+}
+
+[data-atgit-offer-host] .atgit-dismiss {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(11, 31, 58);
+  opacity: 0.75;
+  padding: 6px;
+}
+
+[data-atgit-offer-host] .atgit-dismiss:hover,
+[data-atgit-offer-host] .atgit-dismiss:focus-visible {
+  opacity: 1;
+  outline: none;
+}
+
+[data-atgit-offer-host] .atgit-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgb(11, 31, 58);
+  font-family: "DM Sans", sans-serif;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+[data-atgit-offer-host] .atgit-close:hover,
+[data-atgit-offer-host] .atgit-close:focus-visible {
+  background: rgba(11, 31, 58, 0.08);
+  outline: none;
+}
+
+@media (max-width: 480px) {
+  [data-atgit-offer-host] .atgit-modal {
+    padding: 28px 20px 22px;
+  }
+
+  [data-atgit-offer-host] .atgit-title {
+    font-size: 24px;
+  }
+}
+</style>
+
+<script data-atgit-offer="js">
+(function () {
+  document.querySelectorAll("[data-atgit-offer-host]").forEach(function (node) {
+    node.remove();
+  });
+
+  var COUPON = "SKYJET15";
+
+  function closeOffer(host) {
+    if (host && host.parentNode) host.remove();
+    document.removeEventListener("keydown", onKeydown, true);
+  }
+
+  function onKeydown(e) {
+    if (e.key === "Escape") {
+      var host = document.querySelector("[data-atgit-offer-host]");
+      if (host) closeOffer(host);
+    }
+  }
+
+  var host = document.createElement("div");
+  host.setAttribute("data-atgit-offer-host", "1");
+  host.setAttribute("role", "dialog");
+  host.setAttribute("aria-modal", "true");
+  host.setAttribute("aria-labelledby", "atgit-welcome-title");
+
+  var backdrop = document.createElement("button");
+  backdrop.type = "button";
+  backdrop.className = "atgit-backdrop";
+  backdrop.setAttribute("aria-label", "Close welcome offer");
+  backdrop.addEventListener("click", function () {
+    closeOffer(host);
+  });
+
+  var modal = document.createElement("div");
+  modal.className = "atgit-modal";
+
+  var closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "atgit-close";
+  closeBtn.setAttribute("aria-label", "Close");
+  closeBtn.textContent = "×";
+  closeBtn.addEventListener("click", function () {
+    closeOffer(host);
+  });
+
+  var eyebrow = document.createElement("p");
+  eyebrow.className = "atgit-eyebrow";
+  eyebrow.textContent = "Welcome aboard";
+
+  var title = document.createElement("h2");
+  title.className = "atgit-title";
+  title.id = "atgit-welcome-title";
+  title.textContent = "Your first flight starts with 15% off";
+
+  var copy = document.createElement("p");
+  copy.className = "atgit-copy";
+  copy.textContent =
+    "Use this welcome code on your next SkyJet search. Dummy offer for demo purposes only.";
+
+  var coupon = document.createElement("div");
+  coupon.className = "atgit-coupon";
+
+  var code = document.createElement("span");
+  code.className = "atgit-coupon-code";
+  code.textContent = COUPON;
+
+  coupon.appendChild(code);
+
+  var actions = document.createElement("div");
+  actions.className = "atgit-actions";
+
+  var cta = document.createElement("button");
+  cta.type = "button";
+  cta.className = "atgit-cta";
+  cta.textContent = "Search flights";
+  cta.addEventListener("click", function () {
+    closeOffer(host);
+    var search = document.querySelector("#searchForm") || document.querySelector("#search");
+    if (search && typeof search.scrollIntoView === "function") {
+      search.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+
+  var dismiss = document.createElement("button");
+  dismiss.type = "button";
+  dismiss.className = "atgit-dismiss";
+  dismiss.textContent = "No thanks";
+  dismiss.addEventListener("click", function () {
+    closeOffer(host);
+  });
+
+  actions.appendChild(cta);
+  actions.appendChild(dismiss);
+
+  modal.appendChild(closeBtn);
+  modal.appendChild(eyebrow);
+  modal.appendChild(title);
+  modal.appendChild(copy);
+  modal.appendChild(coupon);
+  modal.appendChild(actions);
+
+  host.appendChild(backdrop);
+  host.appendChild(modal);
+
+  document.body.appendChild(host);
+  document.addEventListener("keydown", onKeydown, true);
+  closeBtn.focus();
+})();
+</script>
