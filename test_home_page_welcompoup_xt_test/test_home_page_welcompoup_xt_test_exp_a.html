@@ -1,0 +1,327 @@
+<style data-atgit-offer="css">
+[data-atgit-offer-host] {
+  box-sizing: border-box;
+}
+
+[data-atgit-offer-host] *,
+[data-atgit-offer-host] *::before,
+[data-atgit-offer-host] *::after {
+  box-sizing: border-box;
+}
+
+[data-atgit-offer-host].atgit-welcome-root {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(11, 31, 58, 0.55);
+  font-family: "DM Sans", sans-serif;
+  color: rgb(26, 36, 51);
+}
+
+[data-atgit-offer-host] .atgit-welcome-dialog {
+  position: relative;
+  width: min(100%, 420px);
+  padding: 32px 28px 28px;
+  background: rgb(244, 247, 251);
+  border: 1px solid rgba(11, 31, 58, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 18px 48px rgba(11, 31, 58, 0.28);
+  text-align: center;
+}
+
+[data-atgit-offer-host] .atgit-welcome-eyebrow {
+  margin: 0 0 10px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(11, 31, 58);
+  opacity: 0.75;
+}
+
+[data-atgit-offer-host] .atgit-welcome-title {
+  margin: 0 0 12px;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: rgb(11, 31, 58);
+}
+
+[data-atgit-offer-host] .atgit-welcome-copy {
+  margin: 0 0 22px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgb(26, 36, 51);
+}
+
+[data-atgit-offer-host] .atgit-welcome-coupon {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 22px;
+  padding: 16px 18px;
+  background: rgb(255, 255, 255);
+  border: 1.5px dashed rgb(11, 31, 58);
+  border-radius: 14px;
+}
+
+[data-atgit-offer-host] .atgit-welcome-coupon-label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(11, 31, 58);
+  opacity: 0.7;
+}
+
+[data-atgit-offer-host] .atgit-welcome-coupon-code {
+  font-family: "DM Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgb(11, 31, 58);
+}
+
+[data-atgit-offer-host] .atgit-welcome-coupon-note {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgb(26, 36, 51);
+  opacity: 0.8;
+}
+
+[data-atgit-offer-host] .atgit-welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+[data-atgit-offer-host] .atgit-welcome-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 999px;
+  background: rgb(11, 31, 58);
+  color: rgb(255, 255, 255);
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+[data-atgit-offer-host] .atgit-welcome-cta:hover,
+[data-atgit-offer-host] .atgit-welcome-cta:focus-visible {
+  background: rgb(18, 42, 74);
+  outline: none;
+}
+
+[data-atgit-offer-host] .atgit-welcome-dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 18px;
+  border: 1px solid rgba(11, 31, 58, 0.25);
+  border-radius: 999px;
+  background: transparent;
+  color: rgb(11, 31, 58);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+[data-atgit-offer-host] .atgit-welcome-dismiss:hover,
+[data-atgit-offer-host] .atgit-welcome-dismiss:focus-visible {
+  background: rgba(11, 31, 58, 0.06);
+  outline: none;
+}
+
+[data-atgit-offer-host] .atgit-welcome-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: rgb(11, 31, 58);
+  font-family: "DM Sans", sans-serif;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+[data-atgit-offer-host] .atgit-welcome-close:hover,
+[data-atgit-offer-host] .atgit-welcome-close:focus-visible {
+  background: rgba(11, 31, 58, 0.08);
+  outline: none;
+}
+
+@media (max-width: 480px) {
+  [data-atgit-offer-host] .atgit-welcome-dialog {
+    padding: 28px 20px 22px;
+  }
+
+  [data-atgit-offer-host] .atgit-welcome-title {
+    font-size: 26px;
+  }
+
+  [data-atgit-offer-host] .atgit-welcome-coupon-code {
+    font-size: 22px;
+  }
+}
+</style>
+
+<script data-atgit-offer="js">
+(function () {
+  document.querySelectorAll("[data-atgit-offer-host]").forEach(function (node) {
+    node.remove();
+  });
+
+  var STORAGE_KEY = "atgit-skyjet-welcome-dismissed";
+  try {
+    if (window.sessionStorage && sessionStorage.getItem(STORAGE_KEY) === "1") {
+      return;
+    }
+  } catch (e) {}
+
+  var previousOverflow = document.body ? document.body.style.overflow : "";
+  if (document.body) {
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeWelcome() {
+    try {
+      if (window.sessionStorage) {
+        sessionStorage.setItem(STORAGE_KEY, "1");
+      }
+    } catch (e) {}
+    if (document.body) {
+      document.body.style.overflow = previousOverflow;
+    }
+    if (host.parentNode) {
+      host.remove();
+    }
+  }
+
+  var host = document.createElement("div");
+  host.setAttribute("data-atgit-offer-host", "1");
+  host.className = "atgit-welcome-root";
+  host.setAttribute("role", "dialog");
+  host.setAttribute("aria-modal", "true");
+  host.setAttribute("aria-labelledby", "atgit-welcome-title");
+
+  var dialog = document.createElement("div");
+  dialog.className = "atgit-welcome-dialog";
+
+  var closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "atgit-welcome-close";
+  closeBtn.setAttribute("aria-label", "Close welcome offer");
+  closeBtn.textContent = "×";
+  closeBtn.addEventListener("click", closeWelcome);
+
+  var eyebrow = document.createElement("p");
+  eyebrow.className = "atgit-welcome-eyebrow";
+  eyebrow.textContent = "New visitor welcome";
+
+  var title = document.createElement("h2");
+  title.id = "atgit-welcome-title";
+  title.className = "atgit-welcome-title";
+  title.textContent = "Welcome aboard SkyJet";
+
+  var copy = document.createElement("p");
+  copy.className = "atgit-welcome-copy";
+  copy.textContent =
+    "Enjoy a sample welcome discount on your first booking search. Use the coupon below when you continue.";
+
+  var coupon = document.createElement("div");
+  coupon.className = "atgit-welcome-coupon";
+
+  var couponLabel = document.createElement("span");
+  couponLabel.className = "atgit-welcome-coupon-label";
+  couponLabel.textContent = "Sample discount coupon";
+
+  var couponCode = document.createElement("span");
+  couponCode.className = "atgit-welcome-coupon-code";
+  couponCode.textContent = "SKYJET15";
+
+  var couponNote = document.createElement("span");
+  couponNote.className = "atgit-welcome-coupon-note";
+  couponNote.textContent = "15% off · Demo code for new visitors · No payment processed";
+
+  coupon.appendChild(couponLabel);
+  coupon.appendChild(couponCode);
+  coupon.appendChild(couponNote);
+
+  var actions = document.createElement("div");
+  actions.className = "atgit-welcome-actions";
+
+  var cta = document.createElement("button");
+  cta.type = "button";
+  cta.className = "atgit-welcome-cta";
+  cta.textContent = "Search flights with coupon";
+  cta.addEventListener("click", function () {
+    closeWelcome();
+    var search =
+      document.querySelector("#searchForm") ||
+      document.querySelector("#fromAirport") ||
+      document.querySelector("section.hero");
+    if (search && typeof search.scrollIntoView === "function") {
+      search.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    var from = document.querySelector("#fromAirport");
+    if (from && typeof from.focus === "function") {
+      from.focus();
+    }
+  });
+
+  var dismiss = document.createElement("button");
+  dismiss.type = "button";
+  dismiss.className = "atgit-welcome-dismiss";
+  dismiss.textContent = "Maybe later";
+  dismiss.addEventListener("click", closeWelcome);
+
+  actions.appendChild(cta);
+  actions.appendChild(dismiss);
+
+  dialog.appendChild(closeBtn);
+  dialog.appendChild(eyebrow);
+  dialog.appendChild(title);
+  dialog.appendChild(copy);
+  dialog.appendChild(coupon);
+  dialog.appendChild(actions);
+  host.appendChild(dialog);
+
+  host.addEventListener("click", function (event) {
+    if (event.target === host) {
+      closeWelcome();
+    }
+  });
+
+  function onKeyDown(event) {
+    if (event.key === "Escape") {
+      document.removeEventListener("keydown", onKeyDown);
+      closeWelcome();
+    }
+  }
+  document.addEventListener("keydown", onKeyDown);
+
+  document.body.appendChild(host);
+})();
+</script>
